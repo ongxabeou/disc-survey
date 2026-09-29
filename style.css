@@ -277,27 +277,30 @@ input[type="text"].is-valid {
     font-weight: bold;
 }
 
-/* --- Tùy chỉnh vùng chứa Slide & Phóng to --- */
+/* Khung chứa slide giới hạn kích thước chuẩn */
 .slide-wrapper {
     position: relative;
-    overflow: hidden;
-    max-width: 100%;
+    max-width: 800px; /* Giới hạn chiều rộng khung hiển thị */
+    max-height: 600px; /* Giới hạn chiều cao */
+    margin: 0 auto;
+    overflow: auto; /* Cho phép cuộn nếu ảnh bị phóng to */
+    background: #fff;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    background: #f9f9f9;
-    border: 1px solid #e0e0e0;
     padding: 10px;
-    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
+/* Ép ảnh nằm gọn trong khung, bật hiệu ứng mượt khi zoom */
 .slide-item-img {
     width: 100%;
     height: auto;
-    transition: transform 0.2s ease-in-out;
-    transform-origin: center center;
-    cursor: zoom-in;
+    max-height: 550px;
+    object-fit: contain;
     display: block;
     margin: 0 auto;
-    border-radius: 6px;
+    transition: transform 0.2s ease;
+    transform-origin: top center;
 }
 
 /* Thanh công cụ Zoom */

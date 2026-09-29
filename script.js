@@ -275,27 +275,52 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// --- ĐIỀU KHIỂN SLIDE TRÌNH DIỄN (TAB 3) ---
+// --- ĐIỀU KHIỂN SLIDE TRÌNH DIỄN VÀ ZOOM (TAB 3) ---
 let currentSlideIndex = 0;
+let currentScale = 1; // Tỉ lệ zoom mặc định (1 = 100%)
 
 function changeSlide(direction) {
-    const slides = document.querySelectorAll('.slide-item');
+    const slides = document.querySelectorAll('.slide-item-img');
     const counter = document.getElementById('slideCounter');
     
-    // Ẩn slide hiện tại
+    // Ẩn slide hiện tại và reset zoom về mặc định khi chuyển slide khác
     slides[currentSlideIndex].style.display = 'none';
+    resetZoom();
     
-    // Tính toán index mới (vòng lặp từ 1 đến 6)
+    // Tính toán index mới
     currentSlideIndex += direction;
     if (currentSlideIndex >= slides.length) {
-        currentSlideIndex = 0; // Quay về slide đầu nếu ở cuối
+        currentSlideIndex = 0;
     } else if (currentSlideIndex < 0) {
-        currentSlideIndex = slides.length - 1; // Nhảy về slide cuối nếu bấm lùi ở đầu
+        currentSlideIndex = slides.length - 1;
     }
     
     // Hiển thị slide mới
     slides[currentSlideIndex].style.display = 'block';
-    
-    // Cập nhật bộ đếm text
     counter.innerText = `Slide ${currentSlideIndex + 1} / ${slides.length}`;
+}
+
+// Hàm tăng / giảm tỉ lệ phóng to
+function adjustZoom(amount) {
+    currentScale += amount;
+    // Giới hạn mức phóng to từ 1x đến tối đa 3x, nhỏ nhất là 1x
+    if (currentScale < 1) currentScale = 1;
+    if (currentScale > 3) currentScale = 3;
+    
+    applyZoom();
+}
+
+// Hàm reset về kích thước ban đầu
+function resetZoom() {
+    currentScale = 1;
+    applyZoom();
+}
+
+// Áp dụng hiệu ứng scale cho ảnh đang hiển thị
+function applyZoom() {
+    const slides = document.querySelectorAll('.slide-item-img');
+    const activeSlide = slides[currentSlideIndex];
+    if (activeSlide) {
+        activeSlide.style.transform = `scale(${currentScale})`;
+    }
 }

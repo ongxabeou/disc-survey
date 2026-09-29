@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khảo Sát Học Sinh THCS & Thống Kê DISC</title>
+    <!-- Liên kết đến file CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- THÊM PHẦN HEADER NÀY VÀO -->
+    <div class="header-banner">
+        <div class="header-content">
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <!-- <h1>Khám Phá Bản Thân - Vững Bước Tương Lai</h1>
+            <p>Dự án ứng dụng định hướng nghề nghiệp cho học sinh THCS TP. Hà Nội</p> -->
+        </div>
+    </div>
+    <!-- KẾT THÚC PHẦN HEADER -->
+    <div class="nav-tabs">
+        <button class="active" onclick="switchTab('surveyTab', event)">1. Trang Khảo Sát</button>
+        <button onclick="switchTab('statsTab', event)">2. Thống Kê DISC</button>
+    </div>
+
+    <!-- TAB 1: FORM KHẢO SÁT -->
+    <div id="surveyTab" class="tab-content active">
+        <h1>BẢNG HỎI KHẢO SÁT HỌC SINH</h1>
+        <p><strong>Dự án:</strong> Xây dựng ứng dụng định hướng nghề nghiệp cho học sinh THCS tại thành phố Hà Nội</p>
+        <p><strong>Năm học:</strong> 2025 – 2026 | <strong>Đối tượng:</strong> Khối 7 – 8 – 9</p>
+        <!-- THÊM PHẦN HƯỚNG DẪN TRẢ LỜI VÀO ĐÂY -->
+        <div class="instructions" style="background-color: #e8f4f8; padding: 20px; border-radius: 8px; margin-bottom: 25px; border-left: 5px solid #3498db; line-height: 1.6;">
+            <h3 style="margin-top: 0; color: #2980b9;">HƯỚNG DẪN TRẢ LỜI</h3>
+            <p style="margin-bottom: 10px;"><strong>1. Mục đích:</strong> Khảo sát này nhằm tìm hiểu cảm nhận của bạn về việc học, sức khoẻ học đường và đặc điểm tính cách của bản thân bạn. Kết quả của nghiên cứu chỉ phục vụ cho mục đích nghiên cứu và xây dựng ứng dụng hỗ trợ định hướng nghề nghiệp cho học sinh THCS.</p>
+            <ul style="margin-top: 0; padding-left: 20px;">
+                <li>Mỗi câu bạn chỉ chọn một phương án duy nhất.</li>
+                <li>Đây không phải bài kiểm tra và không tính điểm, không có đáp án đúng hoặc sai. Bạn chỉ cần trả lời trung thực với suy nghĩ, cảm nhận thật của mình.</li>
+                <li>Bạn hãy làm bài độc lập. Nếu có từ ngữ nào chưa rõ, hãy hỏi thầy/cô hướng dẫn, không tự suy đoán nhé.</li>
+                <li>Việc tham gia là hoàn toàn tự nguyện. Bạn có quyền không trả lời một câu bất kỳ hoặc dừng lại bất cứ lúc nào mà không bị ảnh hưởng gì.</li>
+            </ul>
+            <p><strong>2. Bảo mật:</strong> Khảo sát tuyệt đối đảm bảo tính riêng tư: bạn không cần điền họ tên hay bất kỳ thông tin cá nhân nào. Câu trả lời của bạn chỉ được thể hiện dưới dạng thống kê mô tả chung, không tiết lộ kết quả chi tiết cho bất kỳ ai.</p>
+            <p><strong>3. Thời gian thực hiện:</strong> Khoảng 15 – 20 phút.</p>
+        </div>
+        <!-- KẾT THÚC PHẦN HƯỚNG DẪN -->
+        <form id="surveyForm">
+            
+            <div class="form-group">
+                <label>ĐỒNG Ý THAM GIA (*)</label>
+                <div class="radio-group">
+                    <!-- Thêm onchange vào cả 2 nút radio -->
+                    <label><input type="radio" name="dongY" value="Yes" onchange="checkConsent()" required> Có, mình đồng ý tham gia</label>
+                    <label><input type="radio" name="dongY" value="No" onchange="checkConsent()"> Không, mình không tham gia</label>
+                </div>
+            </div>
+            <!-- Thêm style="display: none;" để mặc định ẩn các câu hỏi bên dưới -->
+            <div id="surveyContent" style="display: none;">            
+                <!-- PHẦN A -->
+                <h2>PHẦN A. THÔNG TIN CHUNG</h2>
+                <div class="form-group">
+                    <label>A1. Hiện tại, bạn học khối nào? (*)</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="khoi" value="7" required> Khối 7</label>
+                        <label><input type="radio" name="khoi" value="8"> Khối 8</label>
+                        <label><input type="radio" name="khoi" value="9"> Khối 9</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>A3. Bạn là: (*)</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="gioiTinh" value="Nam" required> Nam</label>
+                        <label><input type="radio" name="gioiTinh" value="Nu"> Nữ</label>
+                        <label><input type="radio" name="gioiTinh" value="Khac"> Khác</label>
+                        <label><input type="radio" name="gioiTinh" value="KhongTraLoi"> Không muốn trả lời</label>
+                    </div>
+                </div>
+
+                <!-- PHẦN B -->
+                <h2>PHẦN B. NĂNG LỰC HỌC THUẬT</h2>
+                <div class="form-group">
+                    <label>B1. Chương trình bạn đang theo học tại trường là: (*)</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="b1_chuongTrinh" value="BoGD" required> Chương trình của Bộ Giáo dục và Đào tạo Việt Nam</label><br>
+                        <label><input type="radio" name="b1_chuongTrinh" value="QuocTe"> Chương trình quốc tế (Cambridge, AP,…)</label><br>
+                        <label><input type="radio" name="b1_chuongTrinh" value="SongNgu"> Chương trình song ngữ</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>B2. Điểm các môn học của bạn chủ yếu được đánh giá theo thang điểm nào? (*)</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="b2_thangDiem" value="Thang10" required> Thang điểm 10 của Việt Nam</label><br>
+                        <label><input type="radio" name="b2_thangDiem" value="ThangChu"> Thang điểm chữ Cambridge (A*, A, B…)</label><br>
+                        <label><input type="radio" name="b2_thangDiem" value="CaHai"> Cả hai thang</label>
+                    </div>
+                </div>
+
+                <h3>B3. MÔN HỌC BẠN YÊU THÍCH THỨ NHẤT (môn bạn thích nhất) (*)</h3>
+                <div class="form-group">
+                    <label>B3.1. Tên môn học</label>
+                    <input type="text" name="b3_tenMon" required style="width: 100%; padding: 8px;">
+                </div>
+                <div class="form-group">
+                    <label>B3.2. Mức độ yêu thích của bạn đối với môn học này</label>
+                    <div class="radio-group" style="display: grid; grid-template-columns: 1fr 1fr; " >
+                        <label><input type="radio" name="b3_mucDo" value="BinhThuong" required> Bình thường</label>
+                        <label><input type="radio" name="b3_mucDo" value="Thich"> Thích</label>
+                        <label><input type="radio" name="b3_mucDo" value="RatThich"> Rất thích</label>
+                        <label><input type="radio" name="b3_mucDo" value="DamMe"> Đam mê</label>
+                    </div>
+                </div>
+                <div class="form-group" >
+                    <label>B3.3a. Điểm trung bình môn này năm học 2025 – 2026, thang 10</label>
+                    <input type="text" name="b3_diem10" placeholder="Ví dụ: 8,5 hoặc 'không áp dụng'" required style="width: 100%; padding: 8px;">
+                </div>
+                <div class="form-group">
+                    <label>B3.3b. Điểm theo thang chữ Cambridge</label>
+                    <div class="radio-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <label><input type="radio" name="b3_diemCam" value="A*" required> A* (90% – 100%)</label>
+                        <label><input type="radio" name="b3_diemCam" value="A"> A (80% – 89%)</label>
+                        <label><input type="radio" name="b3_diemCam" value="B"> B (70% – 79%)</label>
+                        <label><input type="radio" name="b3_diemCam" value="C"> C (60% – 69%)</label>
+                        <label><input type="radio" name="b3_diemCam" value="D"> D (50% – 59%)</label>
+                        <label><input type="radio" name="b3_diemCam" value="E"> E (40% – 49%)</label>
+                        <label><input type="radio" name="b3_diemCam" value="F"> F (dưới 40%)</label>
+                        <label><input type="radio" name="b3_diemCam" value="KhongApDung"> Không áp dụng</label>
+                    </div>
+                </div>
+
+                <!-- B4 và B5 Không bắt buộc -->
+                <h3>B4. MÔN HỌC BẠN YÊU THÍCH THỨ HAI (Không bắt buộc)</h3>
+                <div class="form-group">
+                    <label>B4.1. Tên môn học</label>
+                    <input type="text" name="b4_tenMon" style="width: 100%; padding: 8px;">
+                </div>
+
+                <h3>B5. MÔN HỌC BẠN YÊU THÍCH THỨ BA (Không bắt buộc)</h3>
+                <div class="form-group">
+                    <label>B5.1. Tên môn học</label>
+                    <input type="text" name="b5_tenMon" style="width: 100%; padding: 8px;">
+                </div>
+
+                <h3>B6. KẾT QUẢ HỌC TẬP CHUNG</h3>
+                <div class="form-group">
+                    <label>B6.1. Điểm trung bình chung (GPA) năm học 2025 – 2026, thang 10 (*)</label>
+                    <input type="text" name="b6_gpa10" placeholder="Ví dụ: 8,5 hoặc 'không áp dụng'" required style="width: 100%; padding: 8px;">
+                </div>
+                <div class="form-group">
+                    <label>B6.2. Xếp loại / điểm tổng kết theo thang chữ Cambridge (nếu có) (*)</label>
+                    <div class="radio-group" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                        <label><input type="radio" name="b6_gpaCam" value="A*" required> A*</label>
+                        <label><input type="radio" name="b6_gpaCam" value="A"> A</label>
+                        <label><input type="radio" name="b6_gpaCam" value="B"> B</label>
+                        <label><input type="radio" name="b6_gpaCam" value="C"> C</label>
+                        <label><input type="radio" name="b6_gpaCam" value="D"> D</label>
+                        <label><input type="radio" name="b6_gpaCam" value="E"> E</label>
+                        <label><input type="radio" name="b6_gpaCam" value="F"> F</label>
+                        <label style="grid-column: 1 / -1;"><input type="radio" name="b6_gpaCam" value="KhongHoc"> Bạn không học chương trình Cambridge / không có điểm</label>
+                    </div>
+                </div>
+
+                <!-- PHẦN C -->
+                <h2>PHẦN C. SỨC KHOẺ HỌC ĐƯỜNG</h2>
+                <p>1: Không bao giờ | 2: Hiếm khi | 3: Thỉnh thoảng | 4: Thường xuyên | 5: Luôn luôn</p>
+                
+                <h3>C1. Sức khoẻ tinh thần (*)</h3>
+                <table class="grid-table">
+                    <thead>
+                        <tr>
+                            <th>Câu hỏi</th>
+                            <th>Không bao giờ</th>
+                            <th>Hiếm khi</th>
+                            <th>Thỉnh thoảng</th>
+                            <th>Thường xuyên</th>
+                            <th>Luôn luôn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Câu 1. Khi ở trường, mình cảm thấy tốt về bản thân mình.</td>
+                        <td><input type="radio" name="q1" value="1" required></td><td><input type="radio" name="q1" value="2"></td><td><input type="radio" name="q1" value="3"></td><td><input type="radio" name="q1" value="4"></td><td><input type="radio" name="q1" value="5"></td></tr>
+                        <tr><td>Câu 2. Khi ở trường, mình cảm thấy tự tin.</td>
+                        <td><input type="radio" name="q2" value="1" required></td><td><input type="radio" name="q2" value="2"></td><td><input type="radio" name="q2" value="3"></td><td><input type="radio" name="q2" value="4"></td><td><input type="radio" name="q2" value="5"></td></tr>
+                        <tr><td>Câu 3. Khi ở trường, mình cảm thấy mình có thể giải quyết được những khó khăn gặp phải.</td>
+                        <td><input type="radio" name="q3" value="1" required></td><td><input type="radio" name="q3" value="2"></td><td><input type="radio" name="q3" value="3"></td><td><input type="radio" name="q3" value="4"></td><td><input type="radio" name="q3" value="5"></td></tr>
+                        <tr><td>Câu 4. Khi ở trường, mình thấy có hứng thú với những việc mình làm.</td>
+                        <td><input type="radio" name="q4" value="1" required></td><td><input type="radio" name="q4" value="2"></td><td><input type="radio" name="q4" value="3"></td><td><input type="radio" name="q4" value="4"></td><td><input type="radio" name="q4" value="5"></td></tr>
+                        <tr><td>Câu 5. Khi ở trường, mình cảm thấy lo lắng.</td>
+                        <td><input type="radio" name="q5" value="1" required></td><td><input type="radio" name="q5" value="2"></td><td><input type="radio" name="q5" value="3"></td><td><input type="radio" name="q5" value="4"></td><td><input type="radio" name="q5" value="5"></td></tr>
+                        <tr><td>Câu 6. Khi ở trường, mình cảm thấy căng thẳng.</td>
+                        <td><input type="radio" name="q6" value="1" required></td><td><input type="radio" name="q6" value="2"></td><td><input type="radio" name="q6" value="3"></td><td><input type="radio" name="q6" value="4"></td><td><input type="radio" name="q6" value="5"></td></tr>
+                    </tbody>
+                </table>
+
+                <h3>C2. Sức khoẻ thể chất (*)</h3>
+                <table class="grid-table">
+                    <thead>
+                        <tr>
+                            <th>Câu hỏi</th>
+                            <th>Không bao giờ</th>
+                            <th>Hiếm khi</th>
+                            <th>Thỉnh thoảng</th>
+                            <th>Thường xuyên</th>
+                            <th>Luôn luôn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Câu 7. Khi ở trường, mình cảm thấy mình khoẻ mạnh.</td>
+                        <td><input type="radio" name="q7" value="1" required></td><td><input type="radio" name="q7" value="2"></td><td><input type="radio" name="q7" value="3"></td><td><input type="radio" name="q7" value="4"></td><td><input type="radio" name="q7" value="5"></td></tr>
+                        <tr><td>Câu 8. Khi ở trường, mình cảm thấy mình có nhiều năng lượng.</td>
+                        <td><input type="radio" name="q8" value="1" required></td><td><input type="radio" name="q8" value="2"></td><td><input type="radio" name="q8" value="3"></td><td><input type="radio" name="q8" value="4"></td><td><input type="radio" name="q8" value="5"></td></tr>
+                        <tr><td>Câu 9. Khi ở trường, mình cảm thấy cơ thể khoẻ khoắn, ít khi mệt mỏi hay đau ốm.</td>
+                        <td><input type="radio" name="q9" value="1" required></td><td><input type="radio" name="q9" value="2"></td><td><input type="radio" name="q9" value="3"></td><td><input type="radio" name="q9" value="4"></td><td><input type="radio" name="q9" value="5"></td></tr>
+                    </tbody>
+                </table>
+
+                <h3>C3. Quan hệ xã hội (*)</h3>
+                <table class="grid-table">
+                    <thead>
+                        <tr>
+                            <th>Câu hỏi</th>
+                            <th>Không bao giờ</th>
+                            <th>Hiếm khi</th>
+                            <th>Thỉnh thoảng</th>
+                            <th>Thường xuyên</th>
+                            <th>Luôn luôn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Câu 10. Khi ở trường, mình cảm thấy mình được mọi người tôn trọng, coi trọng.</td>
+                        <td><input type="radio" name="q10" value="1" required></td><td><input type="radio" name="q10" value="2"></td><td><input type="radio" name="q10" value="3"></td><td><input type="radio" name="q10" value="4"></td><td><input type="radio" name="q10" value="5"></td></tr>
+                        <tr><td>Câu 11. Khi ở trường, mình cảm thấy được an toàn.</td>
+                        <td><input type="radio" name="q11" value="1" required></td><td><input type="radio" name="q11" value="2"></td><td><input type="radio" name="q11" value="3"></td><td><input type="radio" name="q11" value="4"></td><td><input type="radio" name="q11" value="5"></td></tr>
+                        <tr><td>Câu 12. Khi ở trường, mình cảm thấy cô đơn.</td>
+                        <td><input type="radio" name="q12" value="1" required></td><td><input type="radio" name="q12" value="2"></td><td><input type="radio" name="q12" value="3"></td><td><input type="radio" name="q12" value="4"></td><td><input type="radio" name="q12" value="5"></td></tr>
+                    </tbody>
+                </table>
+
+                <h3>C4. Câu kiểm tra (*)</h3>
+                <table class="grid-table">
+                    <thead>
+                        <tr>
+                            <th>Câu hỏi</th>
+                            <th>Không bao giờ</th>
+                            <th>Hiếm khi</th>
+                            <th>Thỉnh thoảng</th>
+                            <th>Thường xuyên</th>
+                            <th>Luôn luôn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Câu 13. Đây là câu kiểm tra sự tập trung. Bạn hãy chọn đáp án "Thỉnh thoảng" cho câu này.</td>
+                        <td><input type="radio" name="q13" value="1" required></td><td><input type="radio" name="q13" value="2"></td><td><input type="radio" name="q13" value="3"></td><td><input type="radio" name="q13" value="4"></td><td><input type="radio" name="q13" value="5"></td></tr>
+                    </tbody>
+                </table>
+
+                <!-- PHẦN D -->
+                <h2>PHẦN D. ĐẶC ĐIỂM TÍNH CÁCH CỦA BẠN (DISC)</h2>
+                <table class="grid-table">
+                    <thead>
+                        <tr>
+                            <th>Câu hỏi</th>
+                            <th>Không bao giờ</th>
+                            <th>Hiếm khi</th>
+                            <th>Thỉnh thoảng</th>
+                            <th>Thường xuyên</th>
+                            <th>Luôn luôn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Nhóm D: Q14, 15, 16 -->
+                        <tr>
+                            <td>Câu 14. Khi làm việc nhóm, mình thích là người đứng ra hướng dẫn cho mọi người.</td>
+                            <td><input type="radio" name="q14" value="1" required></td><td><input type="radio" name="q14" value="2"></td><td><input type="radio" name="q14" value="3"></td><td><input type="radio" name="q14" value="4"></td><td><input type="radio" name="q14" value="5"></td>
+                        </tr>
+                        <tr>
+                            <td>Câu 15. Khi cả nhóm chưa thống nhất ý kiến, mình thường là người đưa ra quyết định cuối cùng.</td>
+                            <td><input type="radio" name="q15" value="1" required></td><td><input type="radio" name="q15" value="2"></td><td><input type="radio" name="q15" value="3"></td><td><input type="radio" name="q15" value="4"></td><td><input type="radio" name="q15" value="5"></td>
+                        </tr>
+                        <tr>
+                            <td>Câu 16. Mình thích được giao những nhiệm vụ khó, có sự thử thách.</td>
+                            <td><input type="radio" name="q16" value="1" required></td><td><input type="radio" name="q16" value="2"></td><td><input type="radio" name="q16" value="3"></td><td><input type="radio" name="q16" value="4"></td><td><input type="radio" name="q16" value="5"></td>
+                        </tr>
+                        <!-- Nhóm I: Q17, 18, 19 -->
+                        <tr>
+                            <td>Câu 17. Mình dễ làm quen với bạn mới.</td>
+                            <td><input type="radio" name="q17" value="1" required></td><td><input type="radio" name="q17" value="2"></td><td><input type="radio" name="q17" value="3"></td><td><input type="radio" name="q17" value="4"></td><td><input type="radio" name="q17" value="5"></td>
+                        </tr>
+                        <tr>
+                            <td>Câu 18. Mình thích nói chuyện, chia sẻ với nhiều người xung quanh mình.</td>
+                            <td><input type="radio" name="q18" value="1" required></td><td><input type="radio" name="q18" value="2"></td><td><input type="radio" name="q18" value="3"></td><td><input type="radio" name="q18" value="4"></td><td><input type="radio" name="q18" value="5"></td>
+                        </tr>
+                        <tr>
+                            <td>Câu 19. Mình có thể thuyết phục được mọi người nghe theo ý kiến của mình.</td>
+                            <td><input type="radio" name="q19" value="1" required></td><td><input type="radio" name="q19" value="2"></td><td><input type="radio" name="q19" value="3"></td><td><input type="radio" name="q19" value="4"></td><td><input type="radio" name="q19" value="5"></td>
+                        </tr>
+                        <!-- Nhóm S: Q20, 21, 22 -->
+                        <tr>
+                            <td>Câu 20. Mình thích mọi việc diễn ra ổn định, không thay đổi bất ngờ.</td>
+                            <td><input type="radio" name="q20" value="1" required></td><td><input type="radio" name="q20" value="2"></td><td><input type="radio" name="q20" value="3"></td><td><input type="radio" name="q20" value="4"></td><td><input type="radio" name="q20" value="5"></td>
+                        </tr>
+                        <tr>
+                            <td>Câu 21. Mình kiên nhẫn lắng nghe và giúp đỡ bạn bè khi cần.</td>
+                            <td><input type="radio" name="q21" value="1" required></td><td><input type="radio" name="q21" value="2"></td><td><input type="radio" name="q21" value="3"></td><td><input type="radio" name="q21" value="4"></td><td><input type="radio" name="q21" value="5"></td>
+                        </tr>
+                        <tr>
+                            <td>Câu 22. Mình vẫn giữ được bình tĩnh khi mọi việc không diễn ra như dự định.</td>
+                            <td><input type="radio" name="q22" value="1" required></td><td><input type="radio" name="q22" value="2"></td><td><input type="radio" name="q22" value="3"></td><td><input type="radio" name="q22" value="4"></td><td><input type="radio" name="q22" value="5"></td>
+                        </tr>
+                        <!-- Nhóm C: Q23, 24, 25 -->
+                        <tr>
+                            <td>Câu 23. Mình thích lên kế hoạch rõ ràng trước khi làm việc gì đó.</td>
+                            <td><input type="radio" name="q23" value="1" required></td><td><input type="radio" name="q23" value="2"></td><td><input type="radio" name="q23" value="3"></td><td><input type="radio" name="q23" value="4"></td><td><input type="radio" name="q23" value="5"></td>
+                        </tr>
+                        <tr>
+                            <td>Câu 24. Mình để ý đến những chi tiết nhỏ khi làm việc, bài tập, dự án.</td>
+                            <td><input type="radio" name="q24" value="1" required></td><td><input type="radio" name="q24" value="2"></td><td><input type="radio" name="q24" value="3"></td><td><input type="radio" name="q24" value="4"></td><td><input type="radio" name="q24" value="5"></td>
+                        </tr>
+                        <tr>
+                            <td>Câu 25. Mình có thói quen kiểm tra lại kỹ trước khi nộp bài hoặc hoàn thành công việc.</td>
+                            <td><input type="radio" name="q25" value="1" required></td><td><input type="radio" name="q25" value="2"></td><td><input type="radio" name="q25" value="3"></td><td><input type="radio" name="q25" value="4"></td><td><input type="radio" name="q25" value="5"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button type="submit" class="submit-btn">Gửi Khảo Sát</button>
+                <span id="submitStatus" class="loading">Đang gửi dữ liệu...</span>
+            </div>
+        </form>
+    </div>
+    <!-- THÊM KHỐI NÀY ĐỂ HIỂN THỊ KẾT QUẢ HƯỚNG NGHIỆP -->
+    <div id="resultContainer" style="display: none; margin-top: 30px; padding: 20px; background: #e8f4f8; border-radius: 8px; border-left: 5px solid #3498db;">
+        <h2 style="color: #2c3e50; margin-top: 0;">Gợi Ý Nghề Nghiệp Của Bạn</h2>
+        <p>Dựa trên tính cách, mức độ hứng thú và năng lực học tập, mức độ phù hợp của bạn với các nhóm nghề như sau:</p>
+        <ul id="careerSuggestions" style="font-size: 16px; line-height: 1.8;">
+            <!-- Kết quả JS sẽ được bơm vào đây -->
+        </ul>
+        <p style="font-size: 14px; color: #555; margin-top: 15px;"><i>* Lưu ý: Kết quả này giúp bạn hiểu rõ bản thân và làm cơ sở tham khảo định hướng nghề nghiệp.</i></p>
+    </div>
+    <!-- KẾT THÚC KHỐI KẾT QUẢ -->
+
+    <!-- TAB 2: THỐNG KÊ -->
+    <div id="statsTab" class="tab-content">
+        <h2>Thống kê phân loại tính cách DISC</h2>
+        <button class="load-btn" onclick="loadStats()">Cập nhật dữ liệu</button>
+        <span id="loadStatus" class="loading">Đang tải dữ liệu...</span>
+        
+        <div id="statsContainer" style="margin-top: 20px; display: none;">
+            <p>Tổng số lượt khảo sát: <strong id="totalCount">0</strong></p>
+            
+            <label>Nhóm D (Dominance - Quyền lực):</label>
+            <div id="barD" class="stats-bar" style="width: 0%;">0</div>
+            
+            <label style="margin-top:15px;">Nhóm I (Influence - Ảnh hưởng):</label>
+            <div id="barI" class="stats-bar" style="background:#e74c3c; width: 0%;">0</div>
+            
+            <label style="margin-top:15px;">Nhóm S (Steadiness - Kiên định):</label>
+            <div id="barS" class="stats-bar" style="background:#2ecc71; width: 0%;">0</div>
+            
+            <label style="margin-top:15px;">Nhóm C (Compliance - Tuân thủ):</label>
+            <div id="barC" class="stats-bar" style="background:#f1c40f; width: 0%;">0</div>
+        </div>
+    </div>
+</div>
+
+<!-- Liên kết đến file JavaScript -->
+<script src="script.js"></script>
+</body>
+</html>

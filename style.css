@@ -1,0 +1,278 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+}
+
+/* Tab Navigation */
+.nav-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.nav-tabs button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+}
+
+.nav-tabs button.active {
+    border-bottom: 3px solid #3498db;
+    color: #3498db;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.radio-group label {
+    font-weight: normal;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+/* Survey Grid */
+.grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.grid-table th, .grid-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.grid-table th:first-child, .grid-table td:first-child {
+    text-align: left;
+    width: 40%;
+}
+
+/* Buttons & Elements */
+button.submit-btn, button.load-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.submit-btn:hover, button.load-btn:hover {
+    background: #2980b9;
+}
+
+.stats-bar {
+    height: 30px;
+    background: #3498db;
+    color: white;
+    line-height: 30px;
+    text-align: right;
+    padding-right: 10px;
+    border-radius: 4px;
+    margin-top: 5px;
+    transition: width 0.5s ease-in-out;
+}
+
+.loading {
+    display: none;
+    color: #e67e22;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+/* --- Hướng dẫn Header Banner --- */
+.header-banner {
+    background-image: url('header.png');
+    background-size: cover;
+    background-position: center;
+    /* background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); */
+    border-radius: 8px;
+    margin-bottom: 25px;
+    padding: 40px 20px;
+    text-align: center;
+    color: rgb(16, 5, 44);
+    box-shadow: 0 4px 15px rgba(37, 117, 252, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Tạo hiệu ứng bóng mờ trang trí cho Header */
+.header-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 200px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.header-banner::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    right: -5%;
+    width: 150px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.header-banner h1 {
+    color: rgb(18, 4, 70);
+    margin: 0 0 10px 0;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.header-banner p {
+    margin: 0;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* Phóng to nút chọn (Radio / Checkbox) */
+input[type="radio"], input[type="checkbox"] {
+    transform: scale(1.5); /* Tăng kích thước lên 1.5 lần. Bạn có thể thay đổi số này (VD: 1.2 hoặc 1.8) */
+    cursor: pointer;
+    margin: 0;
+}
+
+/* Căn chỉnh lại khoảng cách giữa nút chọn và chữ ở phần thông tin chung */
+.radio-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* Khoảng cách giữa nút và chữ */
+    margin-right: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* Phóng to thêm một chút cho các ô tích trong bảng Phần C và Phần D để dễ bấm */
+.grid-table td input[type="radio"] {
+    transform: scale(1.8);
+}
+
+/* Hiệu ứng Validate ngay khi nhập cho ô text */
+input[type="text"] {
+    transition: border-color 0.3s, background-color 0.3s;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="text"].is-invalid {
+    border-color: #e74c3c !important;
+    background-color: #fadbd8 !important;
+    outline: none;
+}
+
+input[type="text"].is-valid {
+    border-color: #2ecc71 !important;
+    background-color: #e9f7ef !important;
+    outline: none;
+}
+
+/* --- Giao diện Thẻ Kết quả Gợi ý Nghề nghiệp --- */
+.result-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.career-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.career-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Làm nổi bật thẻ Top 1 */
+.career-card.top-match {
+    border: 2px solid #3498db;
+    background: #f0f8ff;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+.score-badge {
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.card-body p {
+    margin: 8px 0;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.highlight-text {
+    color: #e67e22;
+    font-weight: bold;
+}

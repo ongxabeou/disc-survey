@@ -382,7 +382,11 @@
                 <!-- Nút thoát hiển thị khi đang full màn hình -->
                 <button type="button" class="exit-fullscreen-btn" onclick="toggleFullScreen()">✕ Thoát (ESC)</button>
                 
-                <!-- Các slide ảnh (Click trực tiếp vào ảnh cũng sẽ bật/tắt toàn màn hình) -->
+                <!-- 2 Nút mũi tên trái/phải nổi khi Fullscreen -->
+                <button type="button" class="fullscreen-nav-btn fullscreen-prev" onclick="changeSlide(-1); event.stopPropagation();">❮</button>
+                <button type="button" class="fullscreen-nav-btn fullscreen-next" onclick="changeSlide(1); event.stopPropagation();">❯</button>
+                
+                <!-- Các slide ảnh -->
                 <img src="slide1.png" class="slide-item slide-item-img active" alt="Slide 1" onclick="toggleFullScreen()">
                 <img src="slide2.png" class="slide-item slide-item-img" alt="Slide 2" style="display: none;" onclick="toggleFullScreen()">
                 <img src="slide3.png" class="slide-item slide-item-img" alt="Slide 3" style="display: none;" onclick="toggleFullScreen()">
@@ -391,7 +395,7 @@
                 <img src="slide6.png" class="slide-item slide-item-img" alt="Slide 6" style="display: none;" onclick="toggleFullScreen()">
             </div>
 
-            <!-- Nút điều hướng Slide (Tiến / Lùi) -->
+            <!-- Nút điều hướng Slide thông thường bên dưới -->
             <div class="slide-controls" style="margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 20px;">
                 <button type="button" onclick="changeSlide(-1)" style="padding: 10px 20px; font-size: 16px; cursor: pointer; background: #3498db; color: white; border: none; border-radius: 4px;">❮ Quay lại</button>
                 <span id="slideCounter" style="font-weight: bold; font-size: 16px;">Slide 1 / 6</span>

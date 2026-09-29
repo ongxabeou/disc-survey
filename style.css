@@ -390,3 +390,42 @@ input[type="text"].is-valid {
 .exit-fullscreen-btn:hover {
     background: rgba(255, 255, 255, 0.4);
 }
+
+/* --- Nút điều hướng slide dạng nổi khi Fullscreen --- */
+.fullscreen-nav-btn {
+    display: none; /* Mặc định ẩn ở chế độ bình thường */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 30px;
+    padding: 20px 15px;
+    cursor: pointer;
+    z-index: 999;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.fullscreen-nav-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.fullscreen-prev {
+    left: 20px;
+}
+
+.fullscreen-next {
+    right: 20px;
+}
+
+/* Chỉ hiện thị hai nút này khi khung chứa vào chế độ toàn màn hình */
+.slide-wrapper:fullscreen .fullscreen-nav-btn {
+    display: block;
+}
+
+/* Tùy chỉnh thêm số đếm slide nhỏ gọn góc trên khi fullscreen (tùy chọn) */
+.slide-wrapper:fullscreen::after {
+    content: ""; 
+}

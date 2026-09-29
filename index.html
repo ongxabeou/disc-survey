@@ -22,6 +22,7 @@
     <div class="nav-tabs">
         <button class="active" onclick="switchTab('surveyTab', event)">1. Trang Khảo Sát</button>
         <button onclick="switchTab('statsTab', event)">2. Thống Kê DISC</button>
+        <button onclick="switchTab('slidesTab', event)">3. Slide Báo Cáo</button>
     </div>
 
     <!-- TAB 1: FORM KHẢO SÁT -->
@@ -359,6 +360,29 @@
             
             <label style="margin-top:15px;">Nhóm C (Compliance - Tuân thủ):</label>
             <div id="barC" class="stats-bar" style="background:#f1c40f; width: 0%;">0</div>
+        </div>
+    </div>
+
+    <!-- TAB 3: SLIDE TRÌNH DIỄN KẾT QUẢ NGHIÊN CỨU -->
+    <div id="slidesTab" class="tab-content">
+        <h2>Trình Diễn Báo Cáo Nghiên Cứu</h2>
+        <p>Sử dụng các nút bên dưới để chuyển qua lại giữa các slide thuyết trình.</p>
+        
+        <div class="slide-container" style="text-align: center; margin-top: 20px;">
+            <!-- Các slide ảnh (Giả định ảnh để chung thư mục hoặc trong thư mục images/) -->
+            <img src="slide1.png" class="slide-item active" alt="Slide 1" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            <img src="slide2.png" class="slide-item" alt="Slide 2" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: none;">
+            <img src="slide3.png" class="slide-item" alt="Slide 3" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: none;">
+            <img src="slide4.png" class="slide-item" alt="Slide 4" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: none;">
+            <img src="slide5.png" class="slide-item" alt="Slide 5" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: none;">
+            <img src="slide6.png" class="slide-item" alt="Slide 6" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: none;">
+
+            <!-- Nút điều hướng Slide -->
+            <div class="slide-controls" style="margin-top: 20px;">
+                <button type="button" onclick="changeSlide(-1)" style="padding: 10px 20px; font-size: 16px; cursor: pointer; background: #3498db; color: white; border: none; border-radius: 4px;">❮ Quay lại</button>
+                <span id="slideCounter" style="margin: 0 20px; font-weight: bold; font-size: 16px;">Slide 1 / 6</span>
+                <button type="button" onclick="changeSlide(1)" style="padding: 10px 20px; font-size: 16px; cursor: pointer; background: #3498db; color: white; border: none; border-radius: 4px;">Tiếp theo ❯</button>
+            </div>
         </div>
     </div>
 </div>

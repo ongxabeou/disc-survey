@@ -274,3 +274,28 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
+// --- ĐIỀU KHIỂN SLIDE TRÌNH DIỄN (TAB 3) ---
+let currentSlideIndex = 0;
+
+function changeSlide(direction) {
+    const slides = document.querySelectorAll('.slide-item');
+    const counter = document.getElementById('slideCounter');
+    
+    // Ẩn slide hiện tại
+    slides[currentSlideIndex].style.display = 'none';
+    
+    // Tính toán index mới (vòng lặp từ 1 đến 6)
+    currentSlideIndex += direction;
+    if (currentSlideIndex >= slides.length) {
+        currentSlideIndex = 0; // Quay về slide đầu nếu ở cuối
+    } else if (currentSlideIndex < 0) {
+        currentSlideIndex = slides.length - 1; // Nhảy về slide cuối nếu bấm lùi ở đầu
+    }
+    
+    // Hiển thị slide mới
+    slides[currentSlideIndex].style.display = 'block';
+    
+    // Cập nhật bộ đếm text
+    counter.innerText = `Slide ${currentSlideIndex + 1} / ${slides.length}`;
+}

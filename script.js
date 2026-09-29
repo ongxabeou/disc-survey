@@ -275,9 +275,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// --- ĐIỀU KHIỂN SLIDE VÀ ZOOM (TAB 3) ---
+// --- ĐIỀU KHIỂN SLIDE VÀ CHẾ ĐỘ TOÀN MÀN HÌNH (TAB 3) ---
 let currentSlideIndex = 0;
-let currentScale = 1;
 
 function changeSlide(direction) {
     const slides = document.querySelectorAll('.slide-item-img');
@@ -285,9 +284,10 @@ function changeSlide(direction) {
     
     if (!slides.length) return;
     
+    // Ẩn slide hiện tại
     slides[currentSlideIndex].style.display = 'none';
-    resetZoom();
     
+    // Tính toán index mới
     currentSlideIndex += direction;
     if (currentSlideIndex >= slides.length) {
         currentSlideIndex = 0;
@@ -295,28 +295,34 @@ function changeSlide(direction) {
         currentSlideIndex = slides.length - 1;
     }
     
+    // Hiển thị slide mới
     slides[currentSlideIndex].style.display = 'block';
     if (counter) {
         counter.innerText = `Slide ${currentSlideIndex + 1} / ${slides.length}`;
     }
 }
 
-function adjustZoom(amount) {
-    currentScale += amount;
-    if (currentScale < 1) currentScale = 1;
-    if (currentScale > 3) currentScale = 3;
-    applyZoom();
-}
-
-function resetZoom() {
-    currentScale = 1;
-    applyZoom();
-}
-
-function applyZoom() {
-    const slides = document.querySelectorAll('.slide-item-img');
-    const activeSlide = slides[currentSlideIndex];
-    if (activeSlide) {
-        activeSlide.style.transform = `scale(${currentScale})`;
+// Hàm bật/tắt chế độ Trình chiếu toàn màn hình
+function toggleFullScreen() {
+    const wrapper = document.getElementById('slideWrapper');
+    
+    if (!document.fullscreenElement) {
+        // Yêu cầu phóng to toàn màn hình khung chứa slide
+        if (wrapper.requestFullscreen) {
+            wrapper.requestFullscreen();
+        } else if (wrapper.webkitRequestFullscreen) { /* Safari */
+            wrapper.webkitRequestFullscreen();
+        } else if (wrapper.msRequestFullscreen) { /* IE/Edge */
+            wrapper.msRequestFullscreen();
+        }
+    } else {
+        // Thoát toàn màn hình
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
     }
 }

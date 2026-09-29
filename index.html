@@ -366,25 +366,29 @@
     <!-- TAB 3: SLIDE TRÌNH DIỄN KẾT QUẢ NGHIÊN CỨU -->
     <div id="slidesTab" class="tab-content">
         <h2>Trình Diễn Báo Cáo Nghiên Cứu</h2>
-        <p>Sử dụng các nút điều hướng hoặc phóng to/thu nhỏ để xem chi tiết nội dung slide.</p>
+        <p>Sử dụng các nút điều hướng bên dưới hoặc bấm trực tiếp vào ảnh để bật chế độ Trình chiếu toàn màn hình.</p>
         
         <div class="slide-container" style="text-align: center; margin-top: 20px; max-width: 900px; margin-left: auto; margin-right: auto;">
             
-            <!-- Thanh công cụ phóng to / thu nhỏ -->
-            <div class="zoom-toolbar">
-                <button type="button" onclick="adjustZoom(0.2)" title="Phóng to (+)">🔍+ Phóng to</button>
-                <button type="button" onclick="adjustZoom(-0.2)" title="Thu nhỏ (-)">🔍- Thu nhỏ</button>
-                <button type="button" onclick="resetZoom()" title="Đặt lại kích thước gốc">↺ Mặc định</button>
+            <!-- Thanh công cụ hành động -->
+            <div class="zoom-toolbar" style="margin-bottom: 10px;">
+                <button type="button" onclick="toggleFullScreen()" style="background: #27ae60; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold;">
+                    🖥️ Bật Trình Chiếu Toàn Màn Hình
+                </button>
             </div>
 
             <!-- Khung chứa ảnh slide -->
-            <div class="slide-wrapper">
-                <img src="slide1.png" class="slide-item slide-item-img active" alt="Slide 1">
-                <img src="slide2.png" class="slide-item slide-item-img" alt="Slide 2" style="display: none;">
-                <img src="slide3.png" class="slide-item slide-item-img" alt="Slide 3" style="display: none;">
-                <img src="slide4.png" class="slide-item slide-item-img" alt="Slide 4" style="display: none;">
-                <img src="slide5.png" class="slide-item slide-item-img" alt="Slide 5" style="display: none;">
-                <img src="slide6.png" class="slide-item slide-item-img" alt="Slide 6" style="display: none;">
+            <div class="slide-wrapper" id="slideWrapper">
+                <!-- Nút thoát hiển thị khi đang full màn hình -->
+                <button type="button" class="exit-fullscreen-btn" onclick="toggleFullScreen()">✕ Thoát (ESC)</button>
+                
+                <!-- Các slide ảnh (Click trực tiếp vào ảnh cũng sẽ bật/tắt toàn màn hình) -->
+                <img src="slide1.png" class="slide-item slide-item-img active" alt="Slide 1" onclick="toggleFullScreen()">
+                <img src="slide2.png" class="slide-item slide-item-img" alt="Slide 2" style="display: none;" onclick="toggleFullScreen()">
+                <img src="slide3.png" class="slide-item slide-item-img" alt="Slide 3" style="display: none;" onclick="toggleFullScreen()">
+                <img src="slide4.png" class="slide-item slide-item-img" alt="Slide 4" style="display: none;" onclick="toggleFullScreen()">
+                <img src="slide5.png" class="slide-item slide-item-img" alt="Slide 5" style="display: none;" onclick="toggleFullScreen()">
+                <img src="slide6.png" class="slide-item slide-item-img" alt="Slide 6" style="display: none;" onclick="toggleFullScreen()">
             </div>
 
             <!-- Nút điều hướng Slide (Tiến / Lùi) -->

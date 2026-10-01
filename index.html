@@ -343,8 +343,9 @@
     <!-- TAB 2: THỐNG KÊ -->
     <div id="statsTab" class="tab-content">
         <h2>Thống kê phân loại tính cách DISC</h2>
-        <button class="load-btn" onclick="loadStats()">Cập nhật dữ liệu</button>
-        <span id="loadStatus" class="loading">Đang tải dữ liệu...</span>
+        
+        <!-- Đã xóa nút bấm, ẩn sẵn text loading -->
+        <span id="loadStatus" class="loading" style="display: none;">Đang tải dữ liệu...</span>
         
         <div id="statsContainer" style="margin-top: 20px; display: none;">
             <p>Tổng số lượt khảo sát: <strong id="totalCount">0</strong></p>

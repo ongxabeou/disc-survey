@@ -2,12 +2,34 @@
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyIxTinaZczMdxbGsxuZyaS76JKC9pnPiLaSjwmQ2Weq5XMa-zBH0qPxanpbVbQjukx/exec';
 
 // Hàm chuyển đổi giữa các Tab (Khảo sát / Thống kê)
-function switchTab(tabId, event) {
-    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-    document.querySelectorAll('.nav-tabs button').forEach(btn => btn.classList.remove('active'));
+// function switchTab(tabId, event) {
+//     document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+//     document.querySelectorAll('.nav-tabs button').forEach(btn => btn.classList.remove('active'));
     
-    document.getElementById(tabId).classList.add('active');
+//     document.getElementById(tabId).classList.add('active');
+//     event.currentTarget.classList.add('active');
+// }
+
+// Ví dụ hàm chuyển đổi qua lại giữa các tab
+function switchTab(tabId) {
+    // 1. Ẩn tất cả các tab content
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.style.display = 'none';
+    });
+    
+    // 2. Xóa active class của các nút menu (nếu có)
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // 3. Hiển thị tab được chọn
+    document.getElementById(tabId).style.display = 'block';
     event.currentTarget.classList.add('active');
+
+    // 4. TỰ ĐỘNG LOAD DỮ LIỆU NẾU LÀ TAB THỐNG KÊ
+    if (tabId === 'statsTab') {
+        loadStats();
+    }
 }
 
 // Xử lý logic ẩn/hiện bảng khảo sát 

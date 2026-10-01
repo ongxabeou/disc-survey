@@ -22,7 +22,7 @@
     <div class="nav-tabs">
         <button class="active" onclick="switchTab('surveyTab', event)">1. Trang Khảo Sát</button>
         <button onclick="switchTab('statsTab', event)">2. Thống Kê DISC</button>
-        <button onclick="switchTab('slidesTab', event)">3. Slide Báo Cáo</button>
+        <button onclick="switchTab('slidesTab', event)" style="display: none;">3. Slide Báo Cáo</button>
     </div>
 
     <!-- TAB 1: FORM KHẢO SÁT -->
@@ -365,7 +365,7 @@
     </div>
 
     <!-- TAB 3: SLIDE TRÌNH DIỄN KẾT QUẢ NGHIÊN CỨU -->
-    <div id="slidesTab" class="tab-content">
+    <div id="slidesTab" class="tab-content" style="display: none;">
         <h2>Trình Diễn Báo Cáo Nghiên Cứu</h2>
         <p>Sử dụng các nút điều hướng bên dưới hoặc bấm trực tiếp vào ảnh để bật chế độ Trình chiếu toàn màn hình.</p>
         
